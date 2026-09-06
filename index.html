@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#061a15"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Deen Quest — an Islamic knowledge quiz adventure.">
+<title>Deen Quest — Learn • Play • Earn</title>
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="assets/images/islamic-background.svg"><link rel="preload" as="image" href="assets/logo.svg"></head>
+<body>
+<div class="stars"></div>
+<header class="topbar">
+  <a class="brand" href="#home"><img src="assets/logo.svg" alt="Deen Quest"></a>
+  <nav>
+    <button data-view="home">Home</button>
+    <button data-view="levels">50 Levels</button>
+    <button data-view="rewards">Rewards</button>
+    <button data-view="dashboard">Dashboard</button>
+  </nav>
+  <div class="stats">
+    <span>⭐ <b id="xp">0</b> XP</span><span>🪙 <b id="coins">0</b></span>
+  </div>
+</header>
+
+<main id="app">
+<section id="home" class="view active">
+  <div class="home-shell">
+    <div class="home-hero">
+      <div class="home-copy">
+        <span class="pill">🌙 Islamic Knowledge Adventure</span>
+        <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+        <div class="home-title">DEEN <span>QUEST</span></div>
+        <h1>Learn Islam. <span>Master 50 Levels.</span></h1>
+        <p>Learn authentic Islamic knowledge through an engaging quiz journey, unlock peaceful 3D scenes, and reach the Grand Gift at Level 50.</p>
+        <div class="hero-actions">
+          <button id="homeStartBtn" class="primary">Start Your Journey →</button>
+          <button id="homeAudioToggle" class="ghost audio-btn" type="button">🔊 Islamic Sound</button>
+          <button class="ghost" data-view="rewards">View Rewards</button>
+        </div>
+        <div id="homeAudioLabel" class="home-audio-label">Masjid Serenity • Level 1</div>
+        <div class="trust"><span>✓ 50 Levels</span><span>✓ 3D Progress Journey</span><span>✓ Mobile Ready</span></div>
+      </div>
+      <div class="home-scene" aria-hidden="true">
+        <div class="scene-stars"></div>
+        <div class="home-moon"></div>
+        <div class="home-glow"></div>
+        <div class="home-mosque">
+          <div class="mosque-minaret left"></div><div class="mosque-minaret right"></div>
+          <div class="mosque-dome"></div><div class="mosque-body"></div>
+        </div>
+        <div class="floating-card">LEVEL <strong id="heroLevel">1</strong><small>Keep going!</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="feature-grid">
+    <article><div>🧠</div><h3>Islamic Quiz</h3><p>Questions become harder as your journey advances.</p></article>
+    <article><div>✨</div><h3>3D Unlocks</h3><p>Every completed level reveals a new Islamic scene.</p></article>
+    <article><div>🎁</div><h3>Grand Gift</h3><p>Complete Level 50 to unlock the Quran gift request form.</p></article>
+  </div>
+</section>
+
+<section id="levels" class="view">
+  <div class="section-head"><div><span class="eyebrow">YOUR JOURNEY</span><h2>50 Sacred Knowledge Levels</h2></div><p>Complete a level to unlock the next one.</p></div>
+  <div id="levelGrid" class="level-grid"></div>
+</section>
+
+<section id="quiz" class="view">
+  <div class="quiz-wrap">
+    <div class="quiz-rules"><span>✓ 0–1 wrong = complete</span><span>⚠ 2–5 wrong = fresh retry</span><span>⛔ 6+ wrong = Level 1 reset</span></div><div class="quiz-head"><button class="back" data-view="levels">← Levels</button><div><span id="quizLevel">LEVEL 1</span><h2 id="quizTitle">Knowledge Challenge</h2></div><div class="timer">⏱ <b id="timer">30</b></div></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div class="question-card">
+      <div class="q-meta"><span id="qNumber">Question 1</span><span id="qDifficulty">Easy</span></div>
+      <div id="questionEnglish" class="question-english"></div><h2 id="questionText" class="question-localized"></h2>
+      <div id="options" class="options"></div>
+      <div id="explanation" class="explanation"></div>
+      <button id="nextBtn" class="primary next" disabled>Next Question →</button>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="view">
+  <div class="result-card">
+    <div class="celebrate">✦</div>
+    <span class="eyebrow">LEVEL COMPLETE</span>
+    <h2 id="resultTitle">MashaAllah!</h2>
+    <p id="resultScore"></p>
+    <div class="reward-row"><span>⭐ <b id="resultXP">0</b> XP</span><span>🪙 <b id="resultCoins">0</b> Coins</span></div>
+    <button class="primary" id="resultAnimationBtn">Watch 3D Reward ✨</button>
+    <button class="ghost" data-view="levels">Back to Levels</button>
+  </div>
+</section>
+
+<section id="animation" class="view">
+  <div class="animation-stage">
+    <div class="sky"></div><div class="big-moon"></div><div class="minaret m1"></div><div class="minaret m2"></div>
+    <div class="dome-big"></div><div class="ground"></div><div class="lantern l1"></div><div class="lantern l2"></div>
+    <div class="animation-message"><span id="animLevel">LEVEL COMPLETE</span><h2 id="animTitle">A New Scene Unlocked</h2><p id="animText">Your knowledge journey continues.</p><div class="side-notification"><b>🌙 Deen Quest Notice</b><span>Keep learning and complete your journey.</span></div></div>
+    <button id="animContinue" class="primary">Continue →</button>
+  </div>
+</section>
+
+<section id="rewards" class="view">
+  <div class="section-head"><div><span class="eyebrow">UNLOCKABLES</span><h2>Your 3D Reward Gallery</h2></div></div>
+  <div id="rewardGrid" class="reward-grid"></div>
+</section>
+
+<section id="dashboard" class="view">
+  <div class="section-head"><div><span class="eyebrow">PLAYER</span><h2>Your Journey</h2></div></div>
+  <div class="dash-grid">
+    <div class="dash-card big"><span>Current Level</span><strong id="dashLevel">1</strong><div class="bar"><i id="dashBar"></i></div></div>
+    <div class="dash-card"><span>Total XP</span><strong id="dashXP">0</strong></div>
+    <div class="dash-card"><span>Coins</span><strong id="dashCoins">0</strong></div>
+    <div class="dash-card"><span>Levels Unlocked</span><strong id="dashUnlocked">1</strong></div>
+  </div>
+  <div class="privacy-note">Your progress is stored locally in this browser. Do not enter sensitive information into the gift form.</div>
+</section>
+
+<section id="gift" class="view">
+  <div class="gift-wrap">
+    <div class="gift-art"><div class="gift-box"><span>☾</span></div><div class="spark s1">✦</div><div class="spark s2">✧</div><div class="spark s3">✦</div></div>
+    <div class="gift-form-card">
+      <span class="eyebrow">GRAND REWARD UNLOCKED</span>
+      <h2>Quran Gift Request</h2>
+      <p>Congratulations! You completed all 50 levels. Fill in the delivery details below. After validation, the WhatsApp request button will unlock.</p>
+      <form id="giftForm">
+        <label>Full Name<input name="name" required minlength="2" autocomplete="name" placeholder="Your full name"></label>
+        <label>Mobile Number<input name="phone" required pattern="[0-9+() -]{7,20}" autocomplete="tel" placeholder="03XX-XXXXXXX"></label>
+        <label>City<input name="city" required minlength="2" autocomplete="address-level2" placeholder="City"></label>
+        <label>Delivery Address<textarea name="address" required minlength="8" autocomplete="street-address" placeholder="Complete delivery address"></textarea></label>
+        <label>Preferred Quran Language
+          <select name="language" required><option value="">Select</option><option>Urdu</option><option>English</option><option>Arabic</option><option>Other</option></select>
+        </label>
+        <label class="check"><input type="checkbox" name="confirm" required> I confirm that the above details are correct.</label>
+        <button id="sendGift" class="primary" type="submit" disabled>Send Request on WhatsApp</button>
+        <small class="form-note">WhatsApp will open with your request pre-filled. You must press Send in WhatsApp.</small>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<footer>© 2026 Deen Quest • Learn with respect • Built for educational use</footer>
+<script src="js/data.js"></script><script src="js/app.js"></script>
+
+<div class="onboarding-modal" id="onboardingModal" aria-hidden="true">
+  <div class="onboarding-card">
+    <div class="onboarding-step" id="onboardingStep1">
+      <div class="onboarding-icon">☪</div>
+      <div class="onboarding-progress">STEP 1 OF 4</div>
+      <h2>Welcome to Deen Quest</h2>
+      <p>First, tell us a little about yourself.</p>
+      <label>Your Name<input id="obName" type="text" autocomplete="name" placeholder="Enter your name"></label>
+      <label>Your Gmail<input id="obEmail" type="email" autocomplete="email" placeholder="example@gmail.com"></label>
+      <button class="primary ob-next" type="button">Continue</button>
+      <div class="ob-error" id="obError1"></div>
+    </div>
+    <div class="onboarding-step" id="onboardingStep2" hidden>
+      <div class="onboarding-progress">STEP 2 OF 4</div>
+      <h2>Tell Us About You</h2>
+      <div class="choice-group"><span>Are you Muslim?</span><div class="choices">
+        <button data-field="muslim" data-value="yes">Yes</button><button data-field="muslim" data-value="no">No</button>
+      </div></div>
+      <div class="choice-group"><span>Can you read the Qur'an?</span><div class="choices">
+        <button data-field="reading" data-value="yes">Yes</button><button data-field="reading" data-value="no">No</button>
+      </div></div>
+      <div class="choice-group"><span>Are you interested in this Islamic learning game?</span><div class="choices">
+        <button data-field="interest" data-value="yes">Yes</button><button data-field="interest" data-value="no">No</button>
+      </div></div>
+      <button class="primary ob-next" type="button">Continue</button>
+      <div class="ob-error" id="obError2"></div>
+    </div>
+    <div class="onboarding-step" id="onboardingStep3" hidden>
+      <div class="onboarding-progress">STEP 3 OF 4</div>
+      <h2>Choose Your Language</h2>
+      <p>All buttons, questions, notifications and game text will use your selected language.</p>
+      <div class="language-grid">
+        <button data-lang="en">🇬🇧 English</button>
+        <button data-lang="ur">🇵🇰 اردو</button>
+        <button data-lang="hi">🇮🇳 हिन्दी</button>
+        <button data-lang="ar">🇸🇦 العربية</button>
+        <button data-lang="tr">🇹🇷 Türkçe</button>
+        <button data-lang="id">🇮🇩 Bahasa Indonesia</button>
+      </div>
+      <button class="primary ob-next" type="button">Continue</button>
+      <div class="ob-error" id="obError3"></div>
+    </div>
+    <div class="onboarding-step" id="onboardingStep4" hidden>
+      <div class="onboarding-icon">✨</div>
+      <div class="onboarding-progress">STEP 4 OF 4</div>
+      <h2 id="readyTitle">You're Ready!</h2>
+      <p id="readyText">Your profile is saved on this device. Your selected language will be used throughout the game.</p>
+      <button class="primary" id="finishOnboarding" type="button">Enter Deen Quest</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

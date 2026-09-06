@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+ <radialGradient id="bg" cx="72%" cy="12%" r="80%"><stop offset="0" stop-color="#123e31"/><stop offset=".45" stop-color="#041310"/><stop offset="1" stop-color="#020807"/></radialGradient>
+ <pattern id="stars" width="120" height="95" patternUnits="userSpaceOnUse">
+  <circle cx="12" cy="18" r="1.2" fill="#fff"/><circle cx="72" cy="57" r="1" fill="#fff"/>
+  <circle cx="104" cy="28" r=".9" fill="#e8c45b"/><circle cx="42" cy="78" r=".8" fill="#fff"/>
+ </pattern>
+ <radialGradient id="glow"><stop stop-color="#2c8c6e" stop-opacity=".28"/><stop offset="1" stop-color="#2c8c6e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#stars)" opacity=".45"/>
+<circle cx="1160" cy="160" r="260" fill="url(#glow)"/>
+</svg>

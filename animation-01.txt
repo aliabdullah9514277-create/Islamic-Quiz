@@ -1,0 +1,1 @@
+Level 1 animation slot. The current website renders this scene with CSS/HTML; replace with an actual video/Lottie/WebGL asset later if desired.

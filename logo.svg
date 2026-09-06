@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#f7d774"/><stop offset=".5" stop-color="#fff2b5"/><stop offset="1" stop-color="#d8a73d"/></linearGradient></defs>
+<rect width="600" height="180" rx="38" fill="#071b18"/>
+<circle cx="105" cy="90" r="54" fill="none" stroke="url(#g)" stroke-width="7"/>
+<path d="M118 45a48 48 0 1 0 0 90 42 42 0 1 1 0-90z" fill="url(#g)"/>
+<path d="M92 123h26l-13-34z" fill="#071b18"/>
+<text x="175" y="91" fill="url(#g)" font-size="48" font-family="Arial" font-weight="800">DEEN QUEST</text>
+<text x="178" y="125" fill="#b9d9cf" font-size="19" font-family="Arial">LEARN • PLAY • EARN</text>
+</svg>

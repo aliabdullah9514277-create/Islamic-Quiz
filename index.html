@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#061a15"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Deen Quest — an Islamic knowledge quiz adventure.">
 <title>Deen Quest — Learn • Play • Earn</title>
-<link rel="icon" href="assets/favicon.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23051b15%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2717%27 fill=%27%23f1d778%27/%3E%3Ccircle cx=%2739%27 cy=%2728%27 r=%2717%27 fill=%27%23051b15%27/%3E%3Cpath d=%27M18 45h28M23 45V33h18v12M27 33v-6h10v6%27 fill=%27none%27 stroke=%27%23f1d778%27 stroke-width=%273%27/%3E%3C/svg%3E">
 <style id="deen-quest-style">
 
 :root{--bg:#041310;--panel:rgba(10,37,31,.78);--panel2:#0b2a23;--gold:#e8c45b;--gold2:#fff0a8;--mint:#8fe2c1;--text:#f7f8f2;--muted:#a9c3bb;--line:rgba(232,196,91,.18);--shadow:0 24px 80px rgba(0,0,0,.35)}
@@ -181,11 +184,19 @@
 }
 
 </style>
+
+<style>
+.clickable-card{cursor:pointer;position:relative;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.clickable-card:hover{transform:translateY(-4px);border-color:rgba(232,196,91,.65);box-shadow:0 16px 35px rgba(0,0,0,.22)}
+.clickable-card:focus-visible{outline:2px solid #e8c45b;outline-offset:3px}
+.card-link{display:inline-block;margin-top:12px;color:#e8c45b;font-weight:800;font-size:13px}
+@media(max-width:760px){.clickable-card{min-height:145px}.card-link{font-size:12px}}
+</style>
 </head>
 <body>
 <div class="stars"></div>
 <header class="topbar">
-  <a class="brand" href="#home"><img src="assets/logo.svg" alt="Deen Quest"></a>
+  <a class="brand" href="#home" aria-label="Deen Quest"><svg viewBox="0 0 320 72" role="img" aria-label="Deen Quest" style="width:190px;height:57px;display:block"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#fff0a8"/><stop offset="1" stop-color="#e8c45b"/></linearGradient></defs><rect width="320" height="72" rx="18" fill="#061a15" stroke="#e8c45b" stroke-opacity=".22"/><circle cx="43" cy="36" r="22" fill="url(#g)"/><circle cx="52" cy="31" r="22" fill="#061a15"/><path d="M26 52h34M30 52V39h26v13M37 39v-8h12v8" fill="none" stroke="#e8c45b" stroke-width="3"/><text x="82" y="44" fill="#fff" font-family="Arial,sans-serif" font-size="30" font-weight="800">DEEN QUEST</text></svg></a>
   <nav>
     <button data-view="home">Home</button>
     <button data-view="levels">50 Levels</button>
@@ -228,7 +239,7 @@
     </div>
   </div>
   <div class="feature-grid">
-    <article><div>🧠</div><h3>Islamic Quiz</h3><p>Questions become harder as your journey advances.</p></article>
+    <article class="clickable-card" data-view="levels" role="button" tabindex="0" aria-label="Open 50 Levels"><div>🧠</div><h3>Islamic Quiz</h3><p>Questions become harder as your journey advances.</p><span class="card-link">▶ Start Islamic Quiz</span></article>
     <article><div>✨</div><h3>3D Unlocks</h3><p>Every completed level reveals a new Islamic scene.</p></article>
     <article><div>🎁</div><h3>Grand Gift</h3><p>Complete Level 50 to unlock the Quran gift request form.</p></article>
   </div>
@@ -880,5 +891,18 @@ window.addEventListener('error', function(e){
 });
 </script>
 <div id="runtimeError" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:99999;padding:14px 16px;border-radius:12px;background:#5b1717;color:#fff;font:600 14px/1.4 Arial,sans-serif;box-shadow:0 10px 30px #0008"></div>
+
+<script>
+document.addEventListener("click", function(e){
+  const card = e.target.closest(".clickable-card");
+  if(card && typeof window.showView === "function"){ window.showView("levels"); }
+});
+document.addEventListener("keydown", function(e){
+  if((e.key==="Enter" || e.key===" ") && e.target.classList && e.target.classList.contains("clickable-card")){
+    e.preventDefault();
+    if(typeof window.showView === "function") window.showView("levels");
+  }
+});
+</script>
 </body>
 </html>
